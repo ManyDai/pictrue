@@ -32,6 +32,8 @@
 						<video  width=241 height=241  id="v" style='z-index:10'></video>
 						<input type="file" id='file' style='display:none' accept="image/gif,image/jpeg,image/jpg,image/png">
 						<div class="tu absolute"></div>
+
+						<img src="" alt="" class="pho">
 					</div>
 				</div>
 			</div>
@@ -99,11 +101,12 @@
 	         // end
              
 			newImageData = cvs.toDataURL("image/png", qua/100);//图片压缩
-			$('.tu').css({
-						'background-image': 'url('+newImageData+')',
-						'background-size': 'cover',
-						'background-position':'center'
-					});
+			$('.pho').attr('src', newImageData);
+			// $('.tu').css({
+			// 			'background-image': 'url('+newImageData+')',
+			// 			'background-size': 'cover',
+			// 			'background-position':'center'
+			// 		});
 			$('.up-file').addClass('none')&&$('#upload-img').removeClass('none');//显示上传按钮
 			layer.closeAll();
 			oVideo.style.display='none';
@@ -157,26 +160,9 @@
 		$('#camara').on('touchstart',function()
 		{
 			oVideo.style.display='block';
+			$('.pho').attr('src', '');
 			mui('#sheet1').popover('toggle');
 			$('.up-file').addClass('none')&&$('#take-photo').removeClass('none');//显示拍照快门按钮
-
-			// if(navigator.webkitGetUserMedia)
-			// {
-			// 		navigator.webkitGetUserMedia({video:true},function(result){
-			// 			oVideo.src=result;
-
-			// 		},function(){
-			// 			alert("erro");
-			// 		})
-			// 	}else{
-			// 		alert("no support");
-			// }
-
-
-
-
-
-
 
 			// Put event listeners into place
 	            var mediaConfig =  { video: true };
