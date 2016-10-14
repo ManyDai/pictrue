@@ -29,7 +29,7 @@
 					<img src="img/plus.png" alt="" class="add">
 					<span class="absolute">添加照片</span>
 					<div class="canvas absolute">
-						<video  width=241 height=241  autoplay id="v"></video>
+						<video  width=241 height=241  id="v"></video>
 						<input type="file" id='file' style='display:none' accept="image/gif,image/jpeg,image/jpg,image/png">
 						<div class="tu absolute"></div>
 					</div>
@@ -159,17 +159,58 @@
 			oVideo.style.display='block';
 			mui('#sheet1').popover('toggle');
 			$('.up-file').addClass('none')&&$('#take-photo').removeClass('none');//显示拍照快门按钮
-			if(navigator.webkitGetUserMedia)
-			{
-					navigator.webkitGetUserMedia({video:true},function(result){
-						oVideo.src=result;
 
-					},function(){
-						alert("erro");
-					})
-				}else{
-					alert("no support");
-			}
+			// if(navigator.webkitGetUserMedia)
+			// {
+			// 		navigator.webkitGetUserMedia({video:true},function(result){
+			// 			oVideo.src=result;
+
+			// 		},function(){
+			// 			alert("erro");
+			// 		})
+			// 	}else{
+			// 		alert("no support");
+			// }
+
+
+
+
+
+
+
+			// Put event listeners into place
+	            var mediaConfig =  { video: true };
+	            var errBack = function(e) {
+	            	console.log('An error has occurred!', e)
+	            };
+
+				// Put video listeners into place
+	            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+	                navigator.mediaDevices.getUserMedia(mediaConfig).then(function(stream) {
+	                    oVideo.src = window.URL.createObjectURL(stream);
+	                    oVideo.play();
+	                });
+	            }
+
+	            /* Legacy code below! */
+	            else if(navigator.getUserMedia) { // Standard
+					navigator.getUserMedia(mediaConfig, function(stream) {
+						oVideo.src = stream;
+						oVideo.play();
+					}, errBack);
+				} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+					navigator.webkitGetUserMedia(mediaConfig, function(stream){
+						oVideo.src = window.webkitURL.createObjectURL(stream);
+						oVideo.play();
+					}, errBack);
+				} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+					navigator.mozGetUserMedia(mediaConfig, function(stream){
+						oVideo.src = window.URL.createObjectURL(stream);
+						oVideo.play();
+					}, errBack);
+				}
+
+	
 		});
 		// 拍到照片
 		$('#take-photo').on('click',function()
