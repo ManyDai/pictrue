@@ -105,6 +105,7 @@
 						'background-position':'center'
 					});
 			$('.up-file').addClass('none')&&$('#upload-img').removeClass('none');//显示上传按钮
+			layer.closeAll();
 			oVideo.style.display='none';
 		}
 
@@ -112,6 +113,10 @@
 		var oFile=document.getElementById('file');
 		oFile.onchange=function()
 		{
+			layer.open({
+				    type: 2
+				    ,content: '正在处理...'
+				  });
 			// 上传单张图片
 			var oImg=new Image();
 			var oReader=new FileReader();
@@ -169,6 +174,10 @@
 		// 拍到照片
 		$('#take-photo').on('click',function()
 		{
+			layer.open({
+				    type: 2
+				    ,content: '正在处理...'
+				  });
 			draw(oVideo,100,'camera');
 		});
 		// end
