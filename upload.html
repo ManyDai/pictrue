@@ -95,9 +95,9 @@
 	             cvs.height = obj.naturalHeight;
 	             cvs.getContext("2d").drawImage(obj, 0, 0,obj.naturalWidth,obj.naturalHeight);
 	         }else{
-	         	 cvs.width = 241;
-	             cvs.height =241;
-	             cvs.getContext("2d").drawImage(obj, 0, 0,241,241);
+	         	 cvs.width = 720;
+	             cvs.height =1080;
+	             cvs.getContext("2d").drawImage(obj, 0, 0,720,1080);
 	         }
 	         // end
              
@@ -146,7 +146,7 @@
 
 				oImg.onload=function()
 				{
-					draw(oImg,70,'photo');
+					draw(oImg,60,'photo');
 				}		
 			}
 
@@ -221,7 +221,7 @@
 				    type: 2
 				    ,content: '正在处理...'
 				  });
-			draw(oVideo,100,'camera');
+			draw(oVideo,80,'camera');
 		});
 		// end
 
