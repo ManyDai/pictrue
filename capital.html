@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邀请函</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<!-- build:css css/public-all.min.css -->
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/common.css">
+	<!-- endbuild -->
+	<link rel="stylesheet" href="css/style.css">
+	<style type="text/css">
+		body,html{background: white}
+	</style>
+</head>
+<body>
+	<div style='height:1rem;'></div>
+	<img src="img/gift.png" alt="" class="gift">
+	<form action="" class="info-wrap">
+		<li class="form-item text_center">
+			<span class="inline_block form-item-banner">
+				*姓名：
+			</span>
+			<input type="text" class="inline_block form-item-input" placeholder="请填写姓名">
+		</li>
+		<li class="form-item text_center">
+			<span class="inline_block form-item-banner">
+				*性别：
+			</span>
+			<input type="text" class="inline_block form-item-input" placeholder="请填写性别">
+		</li>
+		<li class="form-item text_center">
+			<span class="inline_block form-item-banner">
+				<span class="opacity">*</span>年龄：
+			</span>
+			<input type="text" class="inline_block form-item-input" placeholder="请填写年龄">
+		</li>
+		<li class="form-item text_center">
+			<span class="inline_block form-item-banner">
+				*手机：
+			</span>
+			<input type="text" class="inline_block form-item-input"  placeholder="请填写手机号">
+		</li>
+		<li class="form-item text_center">
+			<span class="inline_block form-item-banner">
+				<span class="opacity">*</span>住址：
+			</span>
+			<input type="text" class="inline_block form-item-input"  placeholder="请填写住址">
+		</li>
+		<div class="infos common-txt"><span class="red">带*为必填项，</span>为方便工作人员安排入席事项，务必填写哦</div>
+
+		<input type="submit" class='sub'>
+
+		<p class="common-txt red" style='margin-top:2rem;padding-bottom:2rem'>尊敬的客户朋友，独乐乐不如众乐乐，您可邀请您的一位亲友
+			与您一同感受国寿的服务。<br>
+			     邀请方式：点击右上方“...”转发给好友，赶紧将邀请函发
+			给您的亲友吧！</p>
+	</form>
+	<!-- build:js js/lib/jquery-sea.min.js -->
+    <script type="text/javascript" src='js/lib/jquery-2.1.4.min.js'></script>
+	<script type="text/javascript" src='js/lib/mui.min.js'></script> 
+	<script type="text/javascript" src='js/lib/layer.js'></script> 
+    <!-- endbuild -->
+	
+	<script type="text/javascript">
+	// 跳转页面演示用，提交时注释以下代码
+	$('.sub').on('click',function(event)
+	{
+		event.preventDefault();
+		window.location.href='upload.html'
+	})
+	</script>
+</body>
+</html>
