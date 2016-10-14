@@ -26,8 +26,8 @@
 		<div class="pic-box-wrap relative">
 			<div class="pic-box absolute">
 				<div class="pic-inner relative" onclick="act()">
-					<img src="img/plus.png" alt="" class="add">
-					<span class="absolute">添加照片</span>
+					<img src="img/plus.png" alt="" class="add in">
+					<span class="absolute in">添加照片</span>
 					<div class="canvas absolute">
 						<video  width=241 height=241  id="v" style='z-index:10'></video>
 						<input type="file" id='file' style='display:none' accept="image/gif,image/jpeg,image/jpg,image/png">
@@ -88,6 +88,7 @@
 		function draw(obj,qua,type)
 		{
 			var cvs = document.createElement('canvas');
+			$('.in').removeClass('none');
 			// 判断是相册还是摄像头拍的
 			if(type=='photo'){
 				 cvs.width = obj.naturalWidth;
@@ -101,13 +102,26 @@
 	         // end
              
 			newImageData = cvs.toDataURL("image/png", qua/100);//图片压缩
-			$('.pho').attr('src', newImageData);
+			
 			// $('.tu').css({
 			// 			'background-image': 'url('+newImageData+')',
 			// 			'background-size': 'cover',
 			// 			'background-position':'center'
 			// 		});
+
+			$('.pho').removeClass('wm');
+		    $('.pho').removeClass('hm');
+		    var oImg=new Image();
+		    oImg.src=newImageData;
+		    oImg.onload=function()
+		    {
+		      var rate=oImg.height/oImg.width;
+		      rate<1?$('.pho').addClass('wm'):$('.pho').addClass('hm');
+		      $('.pho').attr('src', oImg.src);
+		    }
+
 			$('.up-file').addClass('none')&&$('#upload-img').removeClass('none');//显示上传按钮
+			$('.in').addClass('none');
 			layer.closeAll();
 			oVideo.style.display='none';
 		}
@@ -120,6 +134,7 @@
 				    type: 2
 				    ,content: '正在处理...'
 				  });
+			$('.in').removeClass('none');
 			// 上传单张图片
 			var oImg=new Image();
 			var oReader=new FileReader();
@@ -160,6 +175,7 @@
 		$('#camara').on('touchstart',function()
 		{
 			oVideo.style.display='block';
+			$('.in').removeClass('none');
 			$('.pho').attr('src', '');
 			mui('#sheet1').popover('toggle');
 			$('.up-file').addClass('none')&&$('#take-photo').removeClass('none');//显示拍照快门按钮
